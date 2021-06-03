@@ -24,7 +24,7 @@ class Solution{
             }
             else {
                 a[k] = R[j];
-                j++;
+                j++;b
                 mi=mi+n1-i;
                 //cout<<L[i]<<" "<<R[j]<<endl;
             }
