@@ -24,3 +24,4 @@ int main()
          << search(arr, n, x, k);
     return 0;
 }
+
