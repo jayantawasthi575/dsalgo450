@@ -1,46 +1,74 @@
-class Solution 
-{
-    public:
-    //Function to find minimum number of pages.
-    bool isfeasible(int arr[],int n,int m,int res)
-    {
-        int student=1,sum=0;
-        for(int i=0;i<n;i++)
-        {
-            if(sum+arr[i]>res)
-            {
-                student++;
-                sum=arr[i];
-            }else{
-                sum=sum+arr[i];
+  public:
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+    long long mi=0;
+    void merge(long long a[],long long l,long long m,long long r){
+        long long n1=m-l+1;
+        long long n2=r-m;
+        long long L[n1],R[n2];
+        for (long long i = 0; i < n1; i++)
+            L[i] = a[l + i];
+        for (long long j = 0; j < n2; j++)
+            R[j] = a[m + 1 + j];
+        
+         long long i = 0;
+        long long j = 0;
+        long long k = l;
+     
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                a[k] = L[i];
+                i++;
             }
+            else {
+                a[k] = R[j];
+                j++;
+                mi=mi+n1-i;
+                //cout<<L[i]<<" "<<R[j]<<endl;
+            }
+            k++;
         }
-        return student<=m;
+        while (i < n1) {
+            a[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            a[k] = R[j];
+            j++;
+            k++;
+        }
     }
-    int findPages(int arr[], int n, int m) 
+    
+    void mergesort(long long a[],long long l,long long r)
     {
-        int max=arr[0];
-        int temp=arr[0];
-        for(int i=1;i<n;i++)
-        {   
-            temp=temp+arr[i];
-            if(max<arr[i])
-            max=arr[i];
-        }
-        int min=max;
-        max=temp;
-        int res=0;
-        while(min<=max)
-        {
-            int mid=(min+max)/2;
-            if(isfeasible(arr,n,m,mid))
-            {
-                res=mid;
-                max=mid-1;
-            }else{
-                min=mid+1;
-            }
-        }
+    if(l<r)
+    {   
+        
+        long long mid=(l+r-1)/2;
+        mergesort(a,l,mid);
+        mergesort(a,mid+1,r);
+        merge(a,l,mid,r);
+    }
+    if(l>=r)
+    {
+        return;
+    }
+    } 
+
+    long long int inversionCount(long long arr[], long long N)
+    {
+        // Your Code Here
+        mergesort(arr,0,N-1);
+        // for(long long i=0;i<N;i++)
+        // {
+        //     cout<<arr[i]<<" ";
+        // }
+        // cout<<endl<<mi<<endl;
+        long long int res = mi;
+        mi = 0;
         return res;
     }
+
 };
