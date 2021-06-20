@@ -47,3 +47,4 @@ class Solution
         }
         head=temp;
     }
+};
