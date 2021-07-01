@@ -46,3 +46,4 @@ int twoStacks :: pop2()
        // arr[top2]=-1;
         return -1;
     }
+}
