@@ -9,4 +9,3 @@ void insert_at_bottom(char x){
         insert_at_bottom(x);
         st.push(a);
     }
-}
