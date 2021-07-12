@@ -16,4 +16,4 @@ class Solution
        Node* max=NULL;
        return check(root,min,max);
     }
-};
+}
