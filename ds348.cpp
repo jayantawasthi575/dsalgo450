@@ -105,7 +105,7 @@ void BFS(int a ,int b, int target)
    
  
   }
-  if (!isSolvable)
+  if (!isSolvable)  n  
         cout << "No solution";
 }
  
